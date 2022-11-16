@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  color:aquamarine;
+}
+
+
