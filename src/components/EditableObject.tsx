@@ -2,7 +2,7 @@ import { createEffect, createSignal, For, Show } from 'solid-js'
 import { NewEntryMenu } from './NewEntryMenu'
 
 interface EditableObjectProps {
-    class: string,
+    class?: string,
     model?: object,
     open: Function,
     setter: Function
@@ -29,7 +29,7 @@ const EditableObject = (props: EditableObjectProps ) => {
     })
     
     return(
-        <div class={props.class}>
+        <div class={props.class?props.class:"obj-edit"}>
             <For each={entries()}>
                 {(entry, index)=>{
                     createEffect(()=> {
