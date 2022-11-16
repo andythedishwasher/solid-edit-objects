@@ -1,7 +1,8 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
+  "name": "solid-edit-objects",
+  "author": "Andy The Dishwasher",
+  "version": "1.0.0",
+  "description": "A set of Solid components that allow users to edit object and array values reactively and recursively.",
   "scripts": {
     "start": "vite",
     "dev": "vite",

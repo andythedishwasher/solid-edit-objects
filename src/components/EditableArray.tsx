@@ -2,7 +2,7 @@ import { createEffect, createSignal, For, Show } from 'solid-js'
 import { NewItemMenu } from './NewItemMenu'
 
 interface EditableArrayProps {
-    class: string,
+    class?: string,
     model?: any[],
     open: Function,
     setter: Function
@@ -17,7 +17,7 @@ const EditableArray = (props: EditableArrayProps) => {
             setNewModel(newModel=>[...newModel, newItem()])
         }})
     return (
-        <div class={props.class}>
+        <div class={props.class?props.class:"arr-edit"}>
             <For each={newModel()}>
                 {(item, index)=>{
                     let [ currentItem, setCurrentItem ] = createSignal(item)

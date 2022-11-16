@@ -10,8 +10,8 @@ interface DropdownProps {
 const Dropdown = (props: DropdownProps) => {
     return (
         <>
-            <label for="dropdown">{props.label}</label>
-            <select id="dropdown" value={props.default? props.default : 'choose value'} onchange={(e) => props.setter(e.currentTarget.value)} >
+            <p>{props.label}: </p>
+            <select value={props.default? props.default : 'choose value'} onchange={(e) => props.setter(e.currentTarget.value)} >
                 <For each={props.options}>
                     {(option) => {
                         if(props.default && option==props.default){
