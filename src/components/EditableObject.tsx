@@ -80,7 +80,7 @@ const EditableObject = (props: EditableObjectProps ) => {
                                             e.preventDefault()
                                             setEditEntryMenu(true)
                                         }}
-                                    >Edit {currentEntry()[0]}: </button><br/>
+                                    >Edit {currentEntry()[0]} </button><br/>
                                     <button
                                         onclick={(e)=>{
                                             e.preventDefault()

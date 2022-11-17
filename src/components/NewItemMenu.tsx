@@ -94,7 +94,7 @@ const NewItemMenu = (props: NewItemMenuProps) => {
                                 e.preventDefault()
                                 setIterableExpanded(true)
                             }}
-                        >Array</button><br/>
+                        >Object</button><br/>
                     </>
                 )}>
                     <EditableObject 
