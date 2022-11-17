@@ -39,15 +39,19 @@ const NewItemMenu = (props: NewItemMenuProps) => {
                     type="text" 
                     value={value()} 
                     onchange={(e)=>setValue(e.currentTarget.value)} 
+                    onkeyup={(e)=>{
+                        if(e.key=='Enter'){
+                            props.setter(value())
+                            props.open(false)
+                        }
+                    }}
                 /><br/>
                 <button 
-                   onclick={(e)=>{
+                    onclick={(e)=>{
                         e.preventDefault()
                         props.setter(value())
-                            if(props.open != undefined){
-                                props.open(false)
-                            }
-                        }}
+                        props.open(false)
+                    }}
                 >Save Item</button><br/> 
             </Show>
             <Show when={type()=='number'}>
@@ -55,14 +59,18 @@ const NewItemMenu = (props: NewItemMenuProps) => {
                     type="number"
                     value={value()}
                     onchange={(e)=>setValue(parseFloat(e.currentTarget.value))}
+                    onkeyup={(e)=>{
+                        if(e.key=='Enter'){
+                            props.setter(value())
+                            props.open(false)
+                        }
+                    }}
                 /><br/>
                 <button 
                     onclick={(e)=>{
                         e.preventDefault()
                         props.setter(value())
-                        if(props.open != undefined){
-                            props.open(false)
-                        }
+                        props.open(false)
                     }}
                 >Save Item</button><br/>
             </Show>
@@ -80,9 +88,7 @@ const NewItemMenu = (props: NewItemMenuProps) => {
                         } else {
                             props.setter(true)
                         }
-                        if(props.open != undefined){
-                            props.open(false)
-                        }
+                        props.open(false)
                     }}
                 >Save Item</button><br/>
             </Show>
@@ -108,9 +114,7 @@ const NewItemMenu = (props: NewItemMenuProps) => {
                     onclick={(e)=>{
                         e.preventDefault()
                         props.setter(value())
-                        if(props.open != undefined){
-                            props.open(false)
-                        }
+                        props.open(false)
                     }}
                 >Save Item</button><br/>
             </Show>
@@ -138,9 +142,7 @@ const NewItemMenu = (props: NewItemMenuProps) => {
                         if(value()){
                             props.setter(value())
                         }
-                        if(props.open != undefined){
-                            props.open(false)
-                        }
+                        props.open(false)
                     }}
                 >Save Item</button><br/>
             </Show>
