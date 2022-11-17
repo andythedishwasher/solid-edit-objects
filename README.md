@@ -21,7 +21,7 @@ import { EditableObject, EditableArray } from 'solid-edit-objects'
 
 Both components accept a very simple set of properties:
 
-model: an object signal getter (for EditableObject) or array signal getter (for EditableArray) that you want the user to be able to modify.
+model: an object signal getter (for EditableObject) or array signal getter (for EditableArray) for the array or object that you want the user to be able to modify.
 
 open: a boolean signal setter used to open and close the object when certain events occur.
 
@@ -33,9 +33,10 @@ You may use a class attribute to define styles for the component. I discovered t
 
 ```
 import { EditableObject, EditableArray } from 'solid-edit-objects'
-import { createSignal } from 'solid-js'
+import { createSignal, createEffect } from 'solid-js'
 
 function MyComponent () {
+
   //object and array to be modified
   let object = {
     foo: 'bar',
@@ -45,12 +46,20 @@ function MyComponent () {
       foo: 'bar'
     }
   };
+  
   let array = [ 'str', 23, ['foo','bar'], {foo: 'bar'} ]
+  
   //getter and setter functions for reactive values and collapse toggles
   let [obj, setObj] = createSignal(object)
   let [arr, setArr] = createSignal(array)
   let [openObj, setOpenObj] = createSignal(false)
   let [openArr, setOpenArr] = createSignal(false)
+  
+  //effect that listens to the signal being set by EditableObject/Array and mutates the modeled value when it changes.
+  createEffect(()=>{
+    object = obj()
+    array = arr()
+  })
   
   return (
     <>
@@ -88,5 +97,7 @@ function MyComponent () {
 
 render(() => <MyComponent />, document.getElementById('root') as HTMLElement);
 ```
+
+If you wish to pass the mutated values to a parent component, you can modify the effect to call a setter prop passed in from the parent component similarly to how the model signal (derived from object or array) is passing its setter function to EditableObject/Array in the above code. Solid's unique approach to reactivity seems to have been the key to unlocking this functionality since I've tried and failed to implement it in multiple other frameworks. I am curious to know if anyone has achieved something similar by different means, so please feel free to reach out if you are aware of any such projects.
 
 For questions, email atd@thecodekitchen.xyz
