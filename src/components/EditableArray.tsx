@@ -12,9 +12,11 @@ const EditableArray = (props: EditableArrayProps) => {
     let [ newModel, setNewModel ] = createSignal(props.model? props.model : ['new value'])
     let [ newItem, setNewItem ] = createSignal([] as any)
     let [ newItemMenu, setNewItemMenu ] = createSignal(false)
+
     createEffect(()=>{
         if(newItem().length > 0 || Array.isArray(newItem())==false){
             setNewModel(newModel=>[...newModel, newItem()])
+            console.log(newModel())
         }})
     return (
         <div class={props.class?props.class:"arr-edit"}>
@@ -31,6 +33,12 @@ const EditableArray = (props: EditableArrayProps) => {
                         }
                         return typeof currentItem()
                     }
+                    createEffect(()=>{
+                        setNewModel(newModel=>{
+                            newModel.splice(index(),1,currentItem())
+                            return newModel
+                        })
+                    })
                     return (
                         <>
                             <Show when={editItemMenu()} fallback={(

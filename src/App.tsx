@@ -1,6 +1,6 @@
 import { Component, Show, createSignal, createEffect } from 'solid-js';
 import { EditableObject } from './components/EditableObject';
-
+import { EditableArray } from './components/EditableArray';
 import styles from './App.module.css';
 
 const App: Component = () => {
@@ -26,9 +26,10 @@ const App: Component = () => {
       foo: 'bar'
     }
   }
-  let [ model, setModel ] = createSignal(example)
+
+  let [ arrayModel, setArrayModel ] = createSignal(example.array)
   let [ open, setOpen ] = createSignal(false)
-  createEffect(()=> console.log(model()))
+  createEffect(()=> console.log(arrayModel()))
   return (
     <div class={styles.App}>
       <header class={styles.header}>
@@ -38,14 +39,14 @@ const App: Component = () => {
             <button onclick={(e)=>{
               e.preventDefault()
               setOpen(true)
-            }}>Edit Object</button>
+            }}>Edit Array</button>
           </>
         )}>
-          <EditableObject
+          <EditableArray
             class="var-menu"
-            model={model()}
+            model={arrayModel()}
             open={setOpen}
-            setter={setModel}
+            setter={setArrayModel}
           />  
         </Show>
       </header>

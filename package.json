@@ -3,6 +3,8 @@
   "author": "Andy The Dishwasher",
   "version": "1.0.0",
   "description": "A set of Solid components that allow users to edit object and array values reactively and recursively.",
+  "type":"module",
+  "exports": "./module.js",
   "scripts": {
     "start": "vite",
     "dev": "vite",
