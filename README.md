@@ -4,8 +4,6 @@ A pair of Solid components that allow front end users to directly edit JS object
 
 ## Installation
 
-NOTE: package will be published soon! Until then, please feel free to clone this repo and npm link to it.
-
 From the directory of a Solid JS project:
 
 ```
