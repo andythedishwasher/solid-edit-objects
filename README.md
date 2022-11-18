@@ -96,6 +96,6 @@ function MyComponent () {
 render(() => <MyComponent />, document.getElementById('root') as HTMLElement);
 ```
 
-If you wish to pass the mutated values to a parent component, you can modify the effect to call a setter prop passed in from the parent component similarly to how the model signal (derived from object or array) is passing its setter function to EditableObject/Array in the above code. Solid's unique approach to reactivity seems to have been the key to unlocking this functionality since I've tried and failed to implement it in multiple other frameworks. I am curious to know if anyone has achieved something similar by different means, so please feel free to reach out if you are aware of any such projects.
+If you wish to pass the mutated values to a parent component, you can modify the effect to call a setter prop passed in from the parent component similarly to how the model signal (derived from object or array) is passing its setter function to EditableObject/Array in the above code. Solid's unique approach to reactivity seems to have been the key to unlocking this functionality since I've tried and failed to implement it in multiple other frameworks. In fact, after combing their docs a bit further, I've become convinced that there are actually methods in the Solid library that could make this workflow even more concise and/or flexible. I am curious to know if anyone has achieved something similar by different means, so please feel free to reach out if you are aware of any such projects.
 
 For questions, email atd@thecodekitchen.xyz
